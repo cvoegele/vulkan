@@ -16,6 +16,12 @@ find_package(Vulkan REQUIRED)
 #glm
 include_directories(glm /home/cvoegele/glm)
 
-add_executable(vulkan_tutorial main.cpp)
+file(GLOB_RECURSE SRC_src
+        RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/*.c
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/*.h)
+
+add_executable(vulkan_tutorial ${SRC_src})
 target_link_libraries(vulkan_tutorial glfw)
 target_link_libraries(vulkan_tutorial vulkan)
